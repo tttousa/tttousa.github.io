@@ -115,7 +115,7 @@
 
 				 <i class="fa fa-heart"></i>
 				 <div class="underline"></div>
-				<div id="getting-started"style="float:none;width:auto;"></div>
+				<div id="getting-started"></div>
 				
 				
 				
@@ -567,6 +567,7 @@
 	d=tow(second);
         if (is_mobile()) {
             document.getElementById("getting-started").innerHTML=a+"&nbspDays&nbsp"+b+"&nbspHours&nbsp"+"<br />"+"&nbsp"+"<br />"+c+"&nbspMins&nbsp"+d+"&nbspSecs";
+			document.getElementById("getting-started").style.fontSize ="10px";
         }else {
             document.getElementById("getting-started").innerHTML=a+"&nbspDays&nbsp"+b+"&nbspHours&nbsp"+c+"&nbspMins&nbsp"+d+"&nbspSecs";
 
