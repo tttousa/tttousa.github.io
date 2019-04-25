@@ -531,6 +531,23 @@
   function tow(n) {
     return n >= 0 && n < 10 ? '0' + n : '' + n;
   }
+  function is_mobile() {
+
+            var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
+
+            var u = navigator.userAgent;
+
+            if (null == u) {
+                return true;
+            }
+            var result = regex_match.exec(u);
+            if (null == result) {
+                return false
+            } else {
+                return true
+            }
+
+        }
   function getDate() {
     var oDate = new Date();//获取日期对象
     var oldTime = oDate.getTime();//现在距离1970年的毫秒数
@@ -551,14 +568,12 @@
 	b=tow(hour);
 	c=tow(minute);
 	d=tow(second);
-	if(navigator.platform.indexOf('Win32')!=-1){ 
-        //go to pc 
-		document.getElementById("getting-started").innerHTML=a+"&nbspDays&nbsp"+b+"&nbspHours&nbsp"+c+"&nbspMins&nbsp"+d+"&nbspSecs";
-     }else{ 
-        // go to 手机 
-		document.getElementById("getting-started").innerHTML=a+"&nbspDays&nbsp"+b+"&nbspHours&nbsp"+"<br />"+c+"&nbspMins&nbsp"+d+"&nbspSecs";
-      } 
-	
+        if (is_mobile()) {
+            document.getElementById("getting-started").innerHTML=a+"&nbspDays&nbsp"+b+"&nbspHours&nbsp"+"<br />"+c+"&nbspMins&nbsp"+d+"&nbspSecs";
+        }else {
+            document.getElementById("getting-started").innerHTML=a+"&nbspDays&nbsp"+b+"&nbspHours&nbsp"+c+"&nbspMins&nbsp"+d+"&nbspSecs";
+
+        }
   } 
    getDate();
    setInterval(getDate, 1000);
